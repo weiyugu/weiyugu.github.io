@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="SmartParking">
+	<meta name="author" content="">
+	<title>SmartParking</title>
+	<link rel="favicon" href="assets/images/favicon.png">
+	<link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<!-- Custom styles for our template -->
+	<link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="assets/css/da-slider.css" />
+	<link rel="stylesheet" href="assets/css/style.css">
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="assets/js/html5sh∂∂iv.js"></script>
+	<script src="assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<!-- Button for smallest screens -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+				<a class="navbar-brand" href="index.html">
+					<img src="assets/images/logo_slim.jpeg" alt="Techro HTML5 template"></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav pull-right mainNav">
+					<li class="active"><a href="index.html">Home</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+	<!-- /.navbar -->
+
+	<!-- Header -->
+	<header id="head">
+		<div class="container">
+			<div class="banner-content">
+				<div id="da-slider" class="da-slider">
+					<div class="da-slide">
+						<h2>Smart Parking</h2>
+						<p>Off Street</p>
+						<div class="da-img"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- /Header -->
+	
+
+	<div id="log_in">
+		<div class="container">
+			<h2>Log in By Entering Plate Number</h2>
+			<div>
+					<input id="input_account" type="text" name="account_num">
+					<button type="button" id="login">log in</button>
+					
+			</div>
+			<h2>Account Info</h2>
+			<div class="row">
+					<div class="col-md-4">
+						<div class="featured-box">
+							<i class="fa fa-cogs fa-2x"></i>
+							<div class="text">
+								<h3>Car Plate</h3>
+								<span id="carPlate"></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="featured-box">
+							<i class="fa fa-leaf fa-2x"></i>
+							<div class="text">
+								<h3>Car Type</h3>
+								<span id="carType"></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="featured-box">
+							<i class="fa fa-tachometer fa-2x"></i>
+							<div class="text">
+								<h3>Owner</h3>
+								<span id="owner"></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="featured-box">
+							<i class="fa fa-eye fa-2x"></i>
+							<div class="text">
+								<h3>Credit Info</h3>
+								<span id="creditInfo"></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+							<div class="featured-box">
+								<i class="fa fa-eye fa-2x"></i>
+								<div class="text">
+									<h3>PrePay</h3>
+									<span id="prePay"></span>
+								</div>
+							</div>
+						</div>
+			</div>
+		</div>
+	</div>
+	<!-- container -->
+	<div id="parking_car">
+		<div class="container">
+			<h2>Parking Your Car</h2>
+			<h3>Drive In</h3> 
+			<div>
+				<select id="input_structure">
+						<option value="USC">USC</option>
+						<option value="KTOWN">KTOWN</option>
+						<option value="MALIBU">MALIBU</option>
+						<option value="SANTA MONICA">SANTA MONICA</option>
+						<option value="EXPO">EXPO</option>
+						</select>
+				<button type="button" id="stc">Enter (Recognizer)</button>
+				<p></p>
+				<p>Available parking spots number:</p>
+				<span id='show_available'></span>
+			</div>
+			<h3>Allocate Your Parking Location</h3>
+			<div>
+				<input id="input_location" type="text" name="location_num">
+				<button type="button" id="lct">select</button>
+				<p\></p>
+			</div> 
+			<h3>Drive Away</h3>
+				<div>
+				<button type="button" id="exit">Exit (Recognizer)</button>
+				</div>
+		<h2>Parking Info</h2>
+			<div>
+				<button type="button" id="ld">get Parking Info</button>
+			</div>
+			<p></p>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="featured-box">
+					<i class="fa fa-arrows fa-2x"></i>
+					<div class="text">
+						<h3>Structure ID</h3>
+						<span id="structureId"></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+					<div class="featured-box">
+						<i class="fa fa-quote-right fa-2x"></i>
+						<div class="text">
+							<h3>Location Number</h3>
+							<span id="locationNum"></span>
+						</div>
+					</div>
+				</div>
+			<div class="col-md-4">
+				<div class="featured-box">
+					<i class="fa fa-cogs fa-2x"></i>
+					<div class="text">
+						<h3>Parking Rate</h3>
+						<span id="rate"></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="featured-box">
+					<i class="fa fa-leaf fa-2x"></i>
+					<div class="text">
+						<h3>Parking Time</h3>
+						<span id="time"></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+					<div class="featured-box">
+						<i class="fa fa-leaf fa-2x"></i>
+						<div class="text">
+							<h3>Parking Fees</h3>
+							<span id="fee"></span>
+						</div>
+					</div>
+				</div>
+		</div>
+		</div>
+		</div>
+	<!-- container -->
+	<div id="charging_car">
+		<div class="container">
+			<h2>Charging Your Car</h2>
+				<div>
+					<button type="button" id="plugin">Plug In</button>
+					<button type="button" id="plugout">Plug Out</button>
+				</div>
+		<h2>Charging Info</h2>
+		<div>
+			<button type="button" id="ldcharge">Get Charging Info</button>
+			</div>
+		<p></p>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="featured-box">
+					<i class="fa fa-arrows fa-2x"></i>
+					<div class="text">
+						<h3>Charging Rate</h3>
+						<span id="chargingRate"></span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+					<div class="featured-box">
+						<i class="fa fa-quote-right fa-2x"></i>
+						<div class="text">
+							<h3>Charging Time</h3>
+							<span id="chargingTime"></span>
+						</div>
+					</div>
+				</div>
+			<div class="col-md-4">
+				<div class="featured-box">
+					<i class="fa fa-cogs fa-2x"></i>
+					<div class="text">
+						<h3>Charging Fees</h3>
+						<span id="chargingFee"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+
+	
+	<section class="container">
+		<div class="heading">
+			<!-- Heading -->
+			<h2>Payment History</h2>
+			<div>
+				<button type="button" id="paymentHistory">Get Payment History</button>
+				<p></p>
+				<p>Parking:</p>
+				<span id="his_parking"></span>
+				<p>Charging:</p>
+				<span id="his_charging"></span>
+				<p></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<img src="assets/images/car.jpg" alt="" class="img-responsive">
+			</div>
+			<div class="col-md-8">
+				<p></p>
+			</div>
+		</div>
+	</section>
+	<footer id="footer">
+		<div class="container">
+			<div class="social text-center">
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-dribbble"></i></a>
+				<a href="#"><i class="fa fa-flickr"></i></a>
+				<a href="#"><i class="fa fa-github"></i></a>
+			</div>
+
+			<div class="clear"></div>
+			<!--CLEAR FLOATS-->
+		</div>
+		<div class="footer2">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-6 panel">
+						<div class="panel-body">
+							<p class="simplenav">
+								<a href="index.html">Home</a> 
+							</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 panel">
+						<div class="panel-body">
+							<p class="text-right">
+								Copyright &copy; 2019.SmartParking All rights reserved
+							</p>
+						</div>
+					</div>
+
+				</div>
+				<!-- /row of panels -->
+			</div>
+		</div>
+	</footer>
+
+<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+	var config = {
+		apiKey: "AIzaSyAL9o4tFB2orRjr_HeMaDNYC5NdJ_wbd5Q",
+		authDomain: "smartparking-42476.firebaseapp.com",
+		databaseURL: "https://smartparking-42476.firebaseio.com",
+		projectId: "smartparking-42476",
+		storageBucket: "smartparking-42476.appspot.com",
+		messagingSenderId: "481937242314"
+	};
+	firebase.initializeApp(config);
+
+	// global key plate number
+	var key_plate;
+	var key_prepay;
+	
+	//log in button
+    function search(){
+		var input_valuable=document.getElementById("input_account").value;
+		key_plate=input_valuable;
+        var plate=document.getElementById('carPlate');
+		var type=document.getElementById('carType');
+		var own=document.getElementById('owner');
+		var credit=document.getElementById('creditInfo');
+		var amount=document.getElementById('prePay');
+
+		var dbRef=firebase.database().ref("Users").orderByKey().equalTo(input_valuable);
+		
+		
+		
+		dbRef.on('value', function(snap){
+			plate.innerHTML = snap.val();
+
+			snap.forEach(function(child){
+				plate.innerHTML = child.child('carPlate').val();
+				})
+			});
+
+		dbRef.on('value', function(snap){
+			type.innerHTML = snap.val();
+
+			snap.forEach(function(child){
+				type.innerHTML = child.child('carType').val();
+				})
+			});
+
+		dbRef.on('value', function(snap){
+			own.innerHTML = snap.val();
+
+			snap.forEach(function(child){
+				own.innerHTML = child.child('owner').val();
+				})
+			});
+		
+		dbRef.on('value', function(snap){
+		    credit.innerHTML = snap.val();
+
+			snap.forEach(function(child){
+				credit.innerHTML = child.child('creditInfo').val();		
+				})
+			});
+		
+		dbRef.on('value', function(snap){
+		amount.innerHTML = snap.val();
+
+		snap.forEach(function(child){
+			key_prepay = child.child('prePay').val();
+			amount.innerHTML = key_prepay
+			})
+		});
+		
+		};
+    
+	var btn = document.getElementById("login");
+	
+	btn.addEventListener("click", search);
+
+	//global key structure ID, parking & charging rate
+	var key_stc
+	var parking_rate
+	var charging_rate
+
+    //select stc button(drive in "enter" button)
+	function writeId(){
+		var stcId=document.getElementById('structureId');
+		var inputstc=document.getElementById("input_structure").value;
+		var rate = document.getElementById("rate");
+		var crate = document.getElementById("chargingRate");
+		
+		key_stc = inputstc
+
+		// show stcID
+		stcId.innerHTML=key_stc
+
+		//show availabel spot
+		var check = firebase.database().ref("Parkings/"+key_stc+"/space")
+		var spots =[]
+			
+		check.on('value', function(snap){
+			snap.forEach(function(childSnap){
+				var childKey=childSnap.key;
+				var childData = childSnap.val();
+				if (childData=='vacant') 
+				{spots.push(childKey)} 
+				});
+			});
+
+		
+		show_available.innerHTML=spots.join();
+		
+
+		// get parking rate
+		var getRate=firebase.database().ref("Parkings/"+key_stc+"/rate");
+		getRate.on('value', function(snap){
+			parking_rate = snap.val();
+			rate.innerHTML = parking_rate;
+			});
+
+		// get charging rate
+		var getCrate=firebase.database().ref("Parkings/"+key_stc+"/chargeRate");
+		getCrate.on('value', function(snap){
+			charging_rate = snap.val();
+			crate.innerHTML = charging_rate;
+			});
+
+		//updare structure ID
+		firebase.database().ref("Users/"+key_plate).update({"structureId":inputstc});
+
+		//get current time
+		var dt = new Date()
+		var h = dt.getHours();
+		var m = dt.getMinutes();
+		h = checkTime(h);
+		m = checkTime(m);
+
+		function checkTime(i) 
+			{ 
+			if (i<10) 
+			{i="0" + i} 
+			return i 
+			};
+
+		//update parking time in
+		firebase.database().ref("Users/"+key_plate).update({"timeIn": h+":"+m});
+	};
+
+	var btn_id = document.getElementById("stc");
+	btn_id.addEventListener("click", writeId);
+
+	var key_lct
+	//allocate button
+	var status;
+	function writeLct(){
+		var lct=document.getElementById('locationNum');
+		var inputlct=document.getElementById("input_location").value;
+		key_lct = inputlct
+		lct.innerHTML=inputlct
+
+		var check = firebase.database().ref("Parkings/"+key_stc+"/space")
+
+		check.on('value', function(snap){
+			snap.forEach(function(childSnap){
+				var childKey=childSnap.key;
+				if (childKey==inputlct) 
+				{status = childSnap.val();} 
+				});
+			});
+		match(status)
+		
+		function match(i){
+		if (i=='vacant'){
+			var updates = {};
+			updates[inputlct]="occupied";
+			firebase.database().ref("Parkings/"+key_stc+"/space").update(updates);
+			firebase.database().ref("Users/"+key_plate).update({"locationNum":inputlct});
+			alert("Success");
+				}
+		else{
+			alert("This parking spot has already been occupied. Please select another one.");
+				}
+		};
+
+		
+	
+	};
+		
+
+	var btn_lct = document.getElementById("lct");
+	btn_lct.addEventListener("click", writeLct);
+	//btn_lct.addEventListener("click", popalert);
+	
+	
+
+	//get parking info button
+	function loadInfo(){
+		var intime;
+		var time=document.getElementById('time');
+		var fee=document.getElementById('fee');
+
+		//get current time
+		var current = new Date();
+		var h = current.getHours();
+		var m = current.getMinutes();
+		h = parseInt(checkTime(h));
+		m = parseInt(checkTime(m));
+
+		function checkTime(i) 
+			{ 
+			if (i<10) 
+			{i="0" + i} 
+			return i 
+			};
+		//get drive in time
+		var getTime = firebase.database().ref("Users/"+key_plate+"/timeIn");
+		getTime.on('value', function(snap){
+			intime = snap.val();
+			});
+		var h_in = parseInt(intime.substring(0,2));
+		var m_in = parseInt(intime.substring(3,5));
+		//compute time lengthe
+		var m_sum = ((h*60 + m)-(h_in*60 + m_in));
+		var h_ceil = Math.ceil(m_sum/60);
+		
+		var h_show = Math.floor(m_sum/60);
+		var m_show = (m_sum - h_show*60);
+		time.innerHTML = (h_show+'h'+m_show+'min');
+
+		//compute fees
+		fee.innerHTML = h_ceil*parking_rate;
+			};
+
+	var btn_ld = document.getElementById("ld");
+	btn_ld.addEventListener("click", loadInfo);
+
+	//exit button
+	function exittime(){
+		var outtime;
+		var time=document.getElementById('time');
+		var fee=document.getElementById('fee');
+
+		//get current time
+		var current = new Date();
+		var ddate = current.toDateString();
+		var dtime = current.toTimeString();
+		var h = current.getHours();
+		var m = current.getMinutes();
+
+		h = checkTime(h);
+		m = checkTime(m);
+
+		h_int = parseInt(h);
+		m_int = parseInt(m);
+
+		function checkTime(i) 
+			{ 
+			if (i<10) 
+			{i="0" + i} 
+			return i 
+			};
+
+		firebase.database().ref("Users/"+key_plate).update({"timeOut":h+":"+m});
+
+		// change space status
+		space_change={}
+		space_change[key_lct]='vacant'
+		firebase.database().ref("Parkings/"+key_stc+"/space").update(space_change);
+
+		//get drive in time
+		var getTime = firebase.database().ref("Users/"+key_plate+"/timeIn");
+		getTime.on('value', function(snap){
+			outtime = snap.val();
+			});
+		var h_in = parseInt(outtime.substring(0,2));
+		var m_in = parseInt(outtime.substring(3,5));
+		//compute time lengthe
+		var m_sum = (h_int*60 + m_int)-(h_in*60 + m_in)
+		var h_ceil = Math.ceil(m_sum/60)
+		
+		var h_show = Math.floor(m_sum/60);
+		var m_show = m_sum - h_show*60;
+		time.innerHTML=(h_show+'h'+m_show+'min');
+
+		//compute fees
+		var parkingfee = h_ceil*parking_rate
+		fee.innerHTML = parkingfee
+		var balanceparking = key_prepay-parkingfee
+
+		//pay parking fees and update firebase
+		if (balanceparking<0){
+			alert("Insufficient Balance!")
+		}
+		else{
+			firebase.database().ref("Users/"+key_plate).update({"prePay":balanceparking});
+			var newkey = key_stc+ddate+dtime;
+			var changepay={};
+			changepay[newkey]=parkingfee;
+			firebase.database().ref("Users/"+key_plate+"/pay/parking").update(changepay);
+			
+			};
+
+	};
+
+	var btn_exit = document.getElementById("exit");
+	btn_exit.addEventListener("click", exittime);
+
+	//plug in button
+	function chargein(){
+		var dt = new Date()
+		var h = dt.getHours();
+		var m = dt.getMinutes();
+		h = checkTime(h);
+		m = checkTime(m);
+
+		function checkTime(i) 
+			{ 
+			if (i<10) 
+			{i="0" + i} 
+			return i 
+			};
+
+		//update parking time in
+		firebase.database().ref("Users/"+key_plate).update({"chargeIn": h+":"+m});
+	
+	};
+
+	var btn_plugin = document.getElementById("plugin");
+	btn_plugin.addEventListener("click", chargein);
+
+	//plug out button
+	function chargeout(){
+		var intime;
+		var time=document.getElementById('chargingTime');
+		var fee=document.getElementById('chargingFee');
+
+		//get current time
+		var current = new Date();
+		var ddate = current.toDateString();
+		var dtime = current.toTimeString();
+		
+		var h = current.getHours();
+		var m = current.getMinutes();
+		h = checkTime(h);
+		m = checkTime(m);
+
+		h_int = parseInt(h);
+		m_int = parseInt(m);
+
+		function checkTime(i) 
+			{ 
+			if (i<10) 
+			{i="0" + i} 
+			return i 
+			};
+
+		//update charge time out
+		firebase.database().ref("Users/"+key_plate).update({"chargeOut":h+":"+m});
+
+		//get drive in time
+		var getTime = firebase.database().ref("Users/"+key_plate+"/chargeIn");
+		getTime.on('value', function(snap){
+			intime = snap.val();
+			});
+		var h_in = parseInt(intime.substring(0,2));
+		var m_in = parseInt(intime.substring(3,5));
+		//compute time lengthe
+		var m_sum = ((h_int*60 + m_int)-(h_in*60 + m_in));
+		var h_ceil = Math.ceil(m_sum/60);
+		
+		var h_show = Math.floor(m_sum/60);
+		var m_show = (m_sum - h_show*60);
+		time.innerHTML = (h_show+'h'+m_show+'min');
+
+		//compute fees
+		var chargingfee = h_ceil*charging_rate;
+		fee.innerHTML = chargingfee;
+
+		balancecharge = key_prepay-chargingfee
+
+		//pay charging fees and update firebase
+		if (balancecharge<0){
+			alert("Insufficient Balance!")
+		}
+		else{
+			firebase.database().ref("Users/"+key_plate).update({"prePay":balancecharge});
+			var newkey = key_stc+ddate+dtime;
+			var changepay={};
+			changepay[newkey]=chargingfee;
+			firebase.database().ref("Users/"+key_plate+"/pay/charging").update(changepay);
+			
+			};
+	};
+
+	var btn_plugout = document.getElementById("plugout");
+	btn_plugout.addEventListener("click", chargeout);
+
+
+	//get charging info button
+	function chargeInfo(){
+
+		var intime;
+		var time=document.getElementById('chargingTime');
+		var fee=document.getElementById('chargingFee');
+
+		//get current time
+		var current = new Date();
+		var h = current.getHours();
+		var m = current.getMinutes();
+		h = checkTime(h);
+		m = checkTime(m);
+
+		h_int = parseInt(h);
+		m_int = parseInt(m);
+
+		function checkTime(i) 
+			{ 
+			if (i<10) 
+			{i="0" + i} 
+			return i 
+			};
+		//get drive in time
+		var getTime = firebase.database().ref("Users/"+key_plate+"/chargeIn");
+		getTime.on('value', function(snap){
+			intime = snap.val();
+			});
+		var h_in = parseInt(intime.substring(0,2));
+		var m_in = parseInt(intime.substring(3,5));
+		//compute time lengthe
+		var m_sum = ((h_int*60 + m_int)-(h_in*60 + m_in));
+		var h_ceil = Math.ceil(m_sum/60);
+		
+		var h_show = Math.floor(m_sum/60);
+		var m_show = (m_sum - h_show*60);
+		time.innerHTML = (h_show+'h'+m_show+'min');
+
+		//compute fees
+		fee.innerHTML = h_ceil*charging_rate;
+	};
+
+	var btn_charge = document.getElementById("ldcharge");
+	
+	btn_charge.addEventListener("click", chargeInfo);
+
+
+	
+	//payment history button
+	function getHis(){
+		
+		var dbHist=firebase.database().ref("Users/"+key_plate+"/pay/parking");
+		var dbHistC=firebase.database().ref("Users/"+key_plate+"/pay/charging");
+
+		var plist =[]
+		var clist = []
+		dbHist.on('value', function(snap){
+			snap.forEach(function(childSnap){
+				var childKey=childSnap.key;
+				var childData = childSnap.val();
+				plist.push(childKey+":$"+childData+"<br>")
+				
+				});
+			});
+
+		dbHistC.on('value', function(snap){
+		snap.forEach(function(childSnap){
+			var childKey=childSnap.key;
+			var childData = childSnap.val();
+			clist.push(childKey+":$"+childData+"<br>")
+			
+			});
+		});
+
+		his_parking.innerHTML=plist
+		his_charging.innerHTML=clist
+	
+	};
+
+	var btn_pay = document.getElementById("paymentHistory");
+	btn_pay.addEventListener("click", getHis);
+
+	
+</script>
+
+	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+	<script src="assets/js/modernizr-latest.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="assets/js/jquery.cslider.js"></script>
+	<script src="assets/js/custom.js"></script>
+</body>
+</html>
